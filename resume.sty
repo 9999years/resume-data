@@ -1,0 +1,205 @@
+\usepackage[
+	nogeometry,
+	nomaketitle,
+	notitles,
+	noheaders,
+	nohyperref,
+]{rebeccastyle}
+
+\usepackage[
+	paperwidth=8.5in,
+	paperheight=11in,
+	portrait,
+	margin=1.5in,
+	top=1in,
+	bottom=1in,
+]{geometry}
+
+%fonts
+\usepackage{fontspec}
+\setromanfont{Garamond Premier Pro}[%
+	%Scale=MatchUppercase,
+	Numbers=OldStyle
+]
+
+\setsansfont{A2-Type New Rail Alphabet}[
+	Path=../fonts/,
+	UprightFont    =* Light,
+	ItalicFont     =* Light Italic,
+	BoldFont       =* Bold,
+	BoldItalicFont =* Bold Italic,
+	Extension=.otf,
+	Scale=MatchUppercase,
+	%Numbers=OldStyle
+]
+
+%\setmonofont{Fira Mono}[
+\setmonofont{LacrimaMG-SerifBold}[
+	Path=/Users/arvensis/Fonts/Foundries/Milieu Grotesque/Lacrima/,
+	Extension=.otf,
+	Scale=MatchLowercase,
+	%StylisticSet=9
+]
+
+\newfontface{\stix}{STIXMath-Regular}[Path=../fonts/, Extension=.otf]
+\newfontface{\fdsymbol}{FdSymbol-Book}[Path=../fonts/, Extension=.otf]
+
+\usepackage{calc}
+\usepackage[factor=2000]{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xparse,xkeyval}
+\renewcommand{\labelitemi}{---}
+
+\newcommand{\Name}{Rebecca Turner}
+\newcommand{\amp}{\textit{\&}}
+\newcommand{\Sharp}{{\stix ♯}}
+\renewcommand{\textbardbl}{\symbol{"A6}\kern-1pt\symbol{"A6}}
+\newcommand{\raiseblock}[2]{\noindent\raise #1\vbox{\noindent #2}}
+\newcommand{\rightsquigglearrow}{{\fdsymbol\symbol{"27FF}}}
+\renewcommand{\longrightarrow}{{\fdsymbol\symbol{"27F6}}}
+\renewcommand{\Longrightarrow}{{\fdsymbol\symbol{"27F9}}}
+\renewcommand{\rightarrow}{{\fdsymbol\symbol{"2192}}}
+\renewcommand{\Rightarrow}{{\fdsymbol\symbol{"21D2}}}
+\renewcommand{\textsubscript}[1]{\raisebox{-0.15em}{\hbox{\scriptsize #1}}}
+\newcommand{\link}[2]{\href{#1}{\texttt{#2}}}
+\newcommand{\simplelink}[1]{\href{https://#1/}{\texttt{#1}}}
+\newcommand{\github}[1]{GitHub: \link{https://github.com/#1/}{#1}}
+\newcommand{\pr}[2]{\link{https://github.com/#1/pull/#2}{#1\thinspace\#\thinspace#2}}
+\newcommand{\twitter}[1]{\link{https://twitter.com/#1/}{@#1}}
+\newcommand{\telephone}[3]{#1-#2-#3}
+%\renewcommand{\href}[1]{}
+\newcommand{\oclock}[2]{#1\thinspace\textsc{#2}}
+\newcommand{\sep}{\hspace{0.5em}---\hspace{0.5em}}
+\newcommand{\gpa}[1]{\hbox{\textsc{gpa:} #1 / 4.00}}
+
+\define@cmdkeys{edu}{location, dates, degree, gpa}
+
+\newenvironment{education}
+	{\providecommand{\edu}[2][]{{\setkeys{edu}{##1}\noindent
+		\textbf{##2} (\cmdKV@edu@location) \hfill \cmdKV@edu@dates \\
+		\cmdKV@edu@degree
+		\@ifundefined{cmdKV@edu@gpa}{}{\hfill \gpa{\cmdKV@edu@gpa}}}}}
+	{}
+
+\newenvironment{shorteducation}{%
+	\NewDocumentCommand{\edu}{o m}{{%
+		\IfValueT{##1}{\setkeys{edu}{##1}}%
+		\item[\cmdKV@edu@dates] ##2, \cmdKV@edu@degree,
+		\gpa{\cmdKV@edu@gpa}}}%
+	\begin{description}
+	}{\end{description}}
+
+\define@cmdkeys{job}{dates, title, company, supervisor, supervisorcontact,
+	city,}
+\define@boolkey{job}{samecompany}[true]{}
+\presetkeys{job}{list}{}
+\newcommand{job}[1]{\setkeys{job}{#1}
+	\ifKV@job@samecompany
+	\else
+		\subsection{\cmdKV@job@company}\noindent
+	\fi
+	\textbf{\cmdKV@job@title}%
+	\@ifundefined{cmdKV@job@city}{}{ (\cmdKV@job@city)}%
+	\hfill\cmdKV@job@dates
+	%Contact: \cmdKV@job@supervisor\ (\cmdKV@job@supervisorcontact)
+	}
+
+\newenvironment{shortjobs}{%
+	\DeclareDocumentCommand{\job}{m}{{%
+		\setkeys{job}{##1}%
+		\item[\job@dates] \job@company, \job@title
+	}}
+	\begin{description}}{\end{description}}
+
+\define@cmdkeys{langs}{github, langs}
+\NewDocumentCommand{\langs}{m}{\@langs{langs={#1}}}
+\NewDocumentCommand{\@langs}{m}{%
+	\setkeys{langs}{#1}%
+	(\@ifundefined{cmdKV@langs@langs}{}{\cmdKV@langs@langs}%
+	\@ifundefined{cmdKV@langs@github}{.}{%
+		\@ifundefined{cmdKV@langs@langs}{}{, }%
+		\github{\cmdKV@langs@github}})}
+
+\define@cmdkeys{software}{github, link, langs, name}
+\define@cmdkey{software}{simplelink}{%
+		\KV@software@tttrue
+		\def\cmdKV@software@link{https://\cmdKV@software@simplelink/}%
+		\def\cmdKV@software@name{\cmdKV@software@simplelink}}
+\define@boolkey{software}{comma}[true]{}
+\define@boolkey{software}{tt}[true]{}
+\presetkeys{software}{comma}{}
+\newenvironment{softwarelist}
+	{\begin{itemize}%
+	\newenvironment{software}[1]%
+		{\setkeys{software}{##1}%
+		\ifKV@software@tt
+			\let\cmdKV@software@name@\cmdKV@software@name
+			\def\cmdKV@software@name{\texttt{\cmdKV@software@name@}}
+		\fi
+		\item
+		\newcommand{\namedlink}{\@ifundefined{cmdKV@software@github}{%
+			\@ifundefined{cmdKV@software@link}
+				{\cmdKV@software@name}% no gh no link
+				{\href{\cmdKV@software@link}{\cmdKV@software@name}}% no gh, link
+			}{%
+			\@ifundefined{cmdKV@software@link}%
+				{\href{https://github.com/\cmdKV@software@github}{\cmdKV@software@name}}% gh, no link
+				{\href{\cmdKV@software@link}{\cmdKV@software@name}}% gh, link
+			}}%
+		\namedlink\ifKV@software@comma,\fi}
+		{\@ifundefined{cmdKV@software@github}{%
+			\@ifundefined{cmdKV@software@langs}{%
+			}{%
+				\@langs{langs=\cmdKV@software@langs}%
+			}%
+		}{%
+			\@ifundefined{cmdKV@software@langs}{%
+				\@langs{github=\cmdKV@software@github}%
+			}{%
+				\@langs{github=\cmdKV@software@github,%
+					langs=\cmdKV@software@langs}%
+			}%
+		}%
+		}%
+	}
+	{\end{itemize}}
+
+%spacing
+\titleformat {\section}{\sffamily\bfseries\huge}{}{0em}{}[]
+\titlespacing{\section}{0em}{1em}{0em}[0em]
+\titleformat {\subsection}{\sffamily\bfseries\Large}{}{0em}{}[]
+\titlespacing{\subsection}{0em}{1em}{0em}[0em]
+\setlength{\columnsep}{0.5in}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+% there's still some space left over
+\setlist[itemize]{
+	partopsep=0em,
+	topsep=0em,
+	itemsep=0em,
+	leftmargin=0em,
+}
+
+%general setup
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginDocument{\thispagestyle{empty}\pagestyle{empty}\raggedright}
+
+\let\Sc\textsc
+\let\It\textit
+\let\Bf\textbf
+\let\Tt\texttt
+
+\renewcommand{\maketitle}{\begin{center}
+		{\sffamily\bfseries\Huge \Name}
+
+		637275@gmail.com%
+		\sep \telephone{571}{643}{5466}
+		\sep \simplelink{github.com/9999years}
+		\sep \simplelink{linkedin.com/in/9999years}
+	\end{center}}
+
+\newacronyms{bs, ba, api, css, scss, html, ma, va, php, gif, sloc, ctan}
+\newacronym[\dotnet]{.net}

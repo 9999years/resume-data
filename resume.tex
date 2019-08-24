@@ -1,0 +1,283 @@
+\documentclass{article}
+\usepackage{resume}
+\begin{document}
+\maketitle
+
+% TODO be consistent with periods in langs, and capitalization in position
+% names
+% TODO be consistent with "and"s
+
+%\begin{itemize}
+	%\item Sophomore computer science \bs\ and mathematics \ba\ at
+	%Brandeis University.
+	%%\item Preferred title: Software Engineer Intern.
+	%\item Available early May through late August.
+%\end{itemize}
+
+%I am a sophomore computer science student enrolled at Brandeis University
+%passionate about software engineering and art, including graphic design and
+%motion graphics. I'm looking for an internship in software development where
+%I can contribute meaningfully and learn real-world development practices.
+
+%I'm looking for part-time library science work where I can
+%connect the greater community to the services a library provides.
+
+%I'm looking for part-time tutoring work where I can apply my unique skills
+%and extensive knowledge of math and science to help kids learn and thrive in
+%schools that don't or aren't able to provide a nurturing or engaging
+%atmosphere.
+
+%I'm looking for part-time office or administrative work where I can use my
+%outgoing and friendly personality to make customers feel welcome and apply
+%my extensive knowledge of computers and electronics to efficiently help
+%customers find what they need.
+
+\section{Professional experience}
+
+\begin{job}[company=Google,
+	city={Mountain View, \textsc{ca}},
+	dates=June 2019--August 2019,
+	title=Software Engineer Intern,
+	]
+\item Migrated settings panels between frameworks and added extra settings
+to control spam filtering.
+\item Fixed old, unmaintained build and test targets.
+\end{job}
+
+%\begin{job}[company={Computer Science Department, Brandeis University},
+	%dates=August 2019--December 2019,
+	%title=Operating Systems Teaching Assistant,
+	%list=false, ]
+%\end{job}
+
+\begin{job}[company={Brandeis University},
+	city={Waltham, \textsc{ma}},
+	dates=February 2019--, title=Systems Administrator,
+	supervisor=Christopher Allison,
+	supervisorcontact=\email{chris@cs.brandeis.edu},
+	]
+\item Replaced a manual macOS deployment process and undocumented Bash
+scripts with Ansible.
+\item Migrated legacy documentation website into a modern framework while
+rewriting and verifying old information. \langs{Hugo, Markdown, \scss,
+\html}
+\end{job}
+
+\begin{job}[samecompany,
+	city={Waltham, \textsc{ma}},
+	dates=September 2018--January 2019, title=Lead Software Engineer,
+	supervisor=Priyanka Renugopalakrishnan,
+	supervisorcontact=\email{priyankarina@brandeis.edu}]
+
+\item Increased uptime and reliability by documenting and automating
+an error-prone process. \langs{Bash}
+
+\item Improved security by removing insecure language features from
+the codebase, migrated 100,000~\sloc\ from Python~2 to Python~3.
+
+\item Expanded documentation from a single file into its own repository,
+reorganizing it into an
+\href{https://github.com/rust-lang-nursery/mdBook}{mdBook}. Wrote a Django
+plugin to integrate documentation with main site. \langs{Markdown, mdBook,
+Python, Django}
+
+%\item Recovered from legacy source code losses by manually repairing an
+%internal database table and regenerating schema changes. \langs{Python,
+%PostgreSQL}
+
+%\item Revised and rewrote security policy.
+
+\end{job}
+
+\begin{job}[company=Iridium, dates=May--August 2018, title=Engineering Intern,
+	city={Leesburg, \textsc{va}},
+	supervisor=Ken Rock, supervisorcontact=\email{Ken.Rock@iridium.com}]
+
+\item Authored tools to detect anomalies within satellite configurations by
+searching for mismatches.
+%Generated reports in \html\ and plain-text and
+%sent automated emails to relevant engineers. Migrated several components
+%into generic organization-wide libraries.
+\langs{Python, Perl, \html, Bash}
+
+\item Created a tool to analyze processor memory dumps in order to simplify
+memory error correction.
+\langs{Python}
+
+\item Created an interactive MongoDB query builder for data science staff.
+Provided rich input based on each field's data type.
+\langs{C++, Qt}
+
+\end{job}
+
+\section{Education}
+
+\begin{education}
+\edu[dates=August 2017--May 2021 (expected),
+	degree={Computer science \bs\ and mathematics \ba}, gpa=3.644,
+	location={Waltham, \ma}]{Brandeis University}
+
+Courses include operating systems, advanced programming techniques, the
+theory of computation, the structure and interpretation of computer
+programs, data structures, calculus, linear algebra, proofs, and physics
+(mechanics / electricity and magnetism).
+
+Dean's list Fall 2017, Fall 2018, Spring 2019.
+
+\edu[dates=June 2017, degree=Honors Diploma in computer science,
+	location={Fairfax, \va}]{The New School of Northern Virginia}
+\end{education}
+
+\section{Software}
+
+Extensive experience: Java, Python, C, JavaScript, PowerShell, LaTeX,
+\php, \html\ 5, \css\ 3, Perl, Bash, and Go.
+
+Moderate experience: Ruby, Rust, Wolfram Mathematica, C++, Haskell,
+Racket / Scheme, C\Sharp, F\Sharp, the \dotnet\ \api, MongoDB, PostgreSQL,
+Redis, Qt, Django, TypeScript.
+
+Comfortable working on Linux, macOS, and Windows.
+
+\subsection{Open Source}
+
+I have published packages on PyPI (Python) as
+\href{https://pypi.org/user/9999years/}{\Tt{9999years}} and \ctan\ (LaTeX)
+as \href{https://ctan.org/author/turner}{\Tt{turner}}. I have contributed
+code and documentation to a variety of open source projects; pull requests
+include \pr{pypa/packaging.python.org}{457}, \pr{pypa/sampleproject}{66},
+\pr{gogs/gogs}{5126}, \pr{russross/blackfriday}{453},
+\pr{abiosoft/caddy-git}{88}, \pr{new-xkit/XKit}{1653},
+\pr{crdoconnor/strictyaml}{55}, \pr{lervag/vimtex}{1358},
+\pr{azavea/ansible-pip}{14}, and \pr{dahlbyk/posh-git}{277}.
+
+\subsection{Independent projects}
+
+I have developed a number of independent software projects, including:
+
+\begin{softwarelist}
+
+\begin{software}{name=I C the Light, github=9999years/i-c-the-light,
+		langs=Written in C}
+	a distance-estimating ray marcher designed to render images of
+	quaternion Julia sets. \\
+	Paper: \link{https://becca.ooo/i-c-the-light.pdf}{becca.ooo/i-c-the-light.pdf}
+\end{software}
+
+\begin{software}{name=juliaplotter, github=9999years/juliaplotter, tt,
+		langs=Python}
+	a script to render cells or grids of arbitrary Julia sets, to
+	overcome difficulties other renderers have in visualizing the many
+	possible values of the constant \It{c} in the Julia set for a given
+	rational function.
+\end{software}
+
+\newcommand{\hashwrap}{\link{https://chrome.google.com/webstore/detail/wrap/nbcgkdilbhnnoemimofnknocbkpldobi}{\#wrap}}
+\begin{software}{name=\#wrap,
+		link=https://chrome.google.com/webstore/detail/wrap/nbcgkdilbhnnoemimofnknocbkpldobi,
+		github=9999years/hashwrap,
+		langs=\css}
+	an extension for Google Chrome to wrap Tumblr's hashtag interface to
+	one line, addressing a widely-held annoyance with Tumblr's user
+	interface. Three years after its publication, \namedlink\ had
+	retained 30,315 active users.
+\end{software}
+
+
+\begin{software}{simplelink=becca.ooo/mandelbrot,
+		langs={\Sc{html 5} canvas, JavaScript}}
+	an interactive web app to explore the Mandelbrot set and visualize
+	incremental values of the underlying sequence at arbitrary points.
+\end{software}
+
+\begin{software}{name=Twitter bots, github=9999years/twitter-bots,
+		langs=\php, comma=false}
+	such as \twitter{gardensbot}, which posts grids of plant and animal
+	emoji in virtual ``gardens'' every other hour, and
+	\twitter{goodwordsbot}, which generates fake but plausible English
+	words from Latin and Greek roots.
+\end{software}
+
+\begin{software}{name=The Daily Report, github=9999years/daily-report,
+		langs=Python}
+	a highly-customizable framework for generating daily agendas for use
+	with receipt printers. Capable of reading and processing Google
+	calendars, outputting weather forecasts, countdowns, to-dos, daily
+	news, and other useful information. Currently running on a Raspberry
+	Pi interfacing with a Star thermal receipt printer.
+\end{software}
+
+%\item \link{https://github.com/9999years/PSVarDump/}{PSVarDump}, a
+%PowerShell module for debugging PowerShell scripts by inspecting variable
+%contents. \\
+%PowerShell script. \github{9999years/PSVarDump}
+
+\begin{software}{simplelink=becca.ooo/fox,
+		langs={\Sc{html 5} canvas, JavaScript}}
+	a program to simulate and visualize the interactions of plant and
+	animal populations in a virtual ecosystem.
+\end{software}
+
+%\item \simplelink{glitcher.becca.ooo}, an
+%in-browser databending app which procedurally glitches images by modifying
+%their binary data. \\
+%\php, JavaScript.
+
+%\begin{software}{simplelink=becca.ooo/integral,
+		%langs={\Sc{html 5} canvas, JavaScript}}
+	%an interactive web app to visualize integral approximations.
+%\end{software}
+
+\end{softwarelist}
+
+%\section{Graphic design / motion graphics}
+
+%I have experience with Adobe \Sc{cc} suite software, and Cinema \Sc{4d}
+%across a variety of fields --- I have created vector illustrations,
+%manipulated photos and videos, and created motion graphics from scratch.
+
+%A \Sc{Wired} article
+%(\link{https://www.wired.com/2014/10/11-beautiful-psychedelic-gifs-created-math-whiz/}
+%{11 Beautiful, Psychedelic GIFs Created by a Math Whiz}) linked to a
+%directory of \Sc{gif} artists I curate, \simplelink{gifartists.tumblr.com}.
+%Motion graphics reel available at \simplelink{becca.ooo/reel}
+
+%Portfolio available on request.
+
+%I have created and posted \Sc{3d} animated \gif s daily on my blog at
+%\link{https://9999yea.rs/}{9999yea.rs} and gathered more than 15,000
+%followers.
+
+%I shoot, develop, scan, and edit my own 35mm film.
+%\link{https://www.flickr.com/photos/techb/}{flickr.com/techb}
+
+%I have spent years practicing and refining my skills at digital art
+%(including graphic design, \Sc{3d} animation, motion graphics, and
+%post-processing) and calligraphy to be truly skilled artistically and
+%creatively.
+
+%I can grapple with high-level mathematical concepts and work until I
+%have an intuitive understanding of complicated proofs.
+
+%\section{Leadership}
+
+%I have served on the Fairness Committee to smoothly and healthily
+%resolve various interpersonal issues, with the goal of promoting
+%understanding and happiness in the wider community.
+
+%Additionally, I manage a brief daily meeting of 130 people.
+
+\section{Publications}
+
+Co-author of
+\href{https://www.unicode.org/L2/L2019/19025-terminals-prop.pdf}{``Proposal
+to add characters from legacy computers and teletext to the UCS''}
+(L2/19-025, 2019), accepted at \ac{utc} 158 ``for a future version of
+Unicode.''
+
+\section{Volunteering}
+
+Speed mentoring for 4-H youth, resume-building with the African American
+Community Service Agency.
+
+\end{document}
