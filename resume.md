@@ -3,6 +3,13 @@
 <!--TODO be consistent with "and"s-->
 
 # Professional experience
+## Brandeis University
+<job>
+Where: Waltham, MA
+When: 2019-08-28 to 2019-12-20
+Title: Operating Systems Teaching Assistant
+</job>
+
 ## Google
 <job>
 Title: Software Engineer Intern
@@ -10,9 +17,12 @@ When: 2019-06-03 to 2019-08-23
 Where: Mountain View, CA
 </job>
 
-- Migrated settings panels between frameworks and added extra settings to
-  control spam filtering.
-- Fixed old, unmaintained build and test targets.
+- Added settings to allow administrators to customize spam filtering,
+  coordinating with multiple other teams and modifying the Gmail spam filter to
+  accommodate the new changes.
+- Fixed old and unmaintained build targets and tests within the Gmail codebase.
+- Migrated an internal library to use a new API and coordinated migration for
+  dozens of dependencies.
 
 <!-- ## Brandeis University
 <where>Waltham, MA</where>
